@@ -4,3 +4,4 @@ __pycache__
 *.parquet
 *.pyc
 uv.lock
+ny_taxi_postgres_data/
