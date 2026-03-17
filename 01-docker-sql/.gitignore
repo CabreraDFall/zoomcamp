@@ -5,3 +5,4 @@ __pycache__
 *.pyc
 uv.lock
 ny_taxi_postgres_data/
+.ipynb_checkpoints

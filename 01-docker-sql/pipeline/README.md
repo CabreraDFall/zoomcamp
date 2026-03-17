@@ -43,6 +43,29 @@ uv run pgcli -h pg-database -p 5432 -U root -d ny_taxi
 ```
 *(Contraseña: `root`)*
 
+### 5. Iniciar Jupyter Notebook (Opcional)
+Para usar Jupyter y acceder desde tu navegador en Windows:
+
+1. **Salir y Reiniciar** (si no mapeaste el puerto 8888):
+   Ejecuta `exit` en el contenedor y vuelve a entrar con este comando:
+   ```powershell
+   docker run -it --rm `
+     --network pg-network `
+     -p 8888:8888 `
+     -v "${PWD}/pipeline:/app" `
+     --entrypoint bash `
+     test:pandas
+   ```
+
+2. **Lanzar Jupyter**:
+   Dentro del contenedor, ejecuta:
+   ```bash
+   uv run jupyter notebook --ip 0.0.0.0 --allow-root
+   ```
+
+3. **Acceder**:
+   Copia la URL que aparece en la terminal (la que empieza por `http://127.0.0.1:8888/tree?token=...`) y pégala en tu navegador de Windows.
+
 ## Notas Importantes
 - **Red de Docker**: `pg-network` debe haber sido creada previamente (`docker network create pg-network`). Docker recordará esta configuración.
 - **Persistencia**: Los datos de Postgres se guardan en el volumen montado `${PWD}/ny_taxi_postgres_data`.
